@@ -1,4 +1,4 @@
-# pylint: disable=C0115
+# pylint: disable=C0115,C0114
 
 
 from rest_framework import serializers

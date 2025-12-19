@@ -1,3 +1,4 @@
+# pylint: disable=C0114, C0301, E0307, E1101
 from django.db import models
 
 
