@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from rest_framework import generics
+from .models import Proyectos
 
-# Create your views here.
+class ProyectosListCreate(generics.ListCreateAPIView):
+    queryset = Proyectos.objects.all()
+    serializer_class = ProyectosSerializer

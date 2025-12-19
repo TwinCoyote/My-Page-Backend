@@ -1,0 +1,17 @@
+
+-- Creacion de la Base de datos
+
+CREATE DATABASE portfolio_db;
+CREATE USER portafolio_ruben WITH PASSWORD 'u8735xa8A2'; 
+ALTER ROLE portafolio_ruben SET client_encoding TO 'utf8';
+ALTER ROLE portafolio_ruben SET default_transaction_isolation TO 'read committed';
+ALTER ROLE portafolio_ruben SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE portfolio_db TO portafolio_ruben;
+
+-- Permisos adicionales necesarios para el esquema público
+
+GRANT ALL PRIVILEGES ON SCHEMA public TO portafolio_ruben;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO portafolio_ruben;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO portafolio_ruben;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO portafolio_ruben;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO portafolio_ruben; 
