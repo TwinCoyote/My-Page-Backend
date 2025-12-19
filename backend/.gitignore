@@ -1,0 +1,32 @@
+# Python cache y compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entorno virtual
+Ruvenv/
+
+# Archivos de configuración de Django
+*.sqlite3
+*.log
+
+# Archivos de migraciones 
+# **/migrations/*.py
+# **/migrations/*.pyc
+# !**/migrations/__init__.py
+
+# Archivos de desarrollo / IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno
+.env
+
+# Media / archivos subidos por usuarios
+/media/

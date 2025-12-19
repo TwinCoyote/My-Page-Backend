@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Proyectos, ImagenProyecto, VideoProyecto
+from .models import (
+    Proyectos,
+    ImagenProyecto,
+    VideoProyecto,
+    Certifications,
+    MyWorkExperience,
+    Technology,
+)
 
 
 class ImagenProyectoInline(admin.TabularInline):
@@ -14,7 +21,34 @@ class VideoProyectoInline(admin.TabularInline):
 
 @admin.register(Proyectos)
 class ProyectoAdmin(admin.ModelAdmin):
-    list_display = ("titulo", "fecha_creacion")
-    search_fields = ("titulo", "tecnologias")
+    list_display = ("titulo", "fecha_creacion", "tecnologias_list")
+    search_fields = ("titulo", "descripcion", "tecnologias__nombre")
     list_filter = ("fecha_creacion",)
+    filter_horizontal = ("tecnologias",)
     inlines = [ImagenProyectoInline, VideoProyectoInline]
+
+    def tecnologias_list(self, obj):
+        return ", ".join(t.nombre for t in obj.tecnologias.all())
+
+
+@admin.register(Certifications)
+class CertificationsAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "fecha", "tecnologias_list")
+    search_fields = ("titulo", "descripcion", "tecnologias__nombre")
+    list_filter = ("fecha",)
+    filter_horizontal = ("tecnologias",)
+
+    def tecnologias_list(self, obj):
+        return ", ".join(t.nombre for t in obj.tecnologias.all())
+
+
+@admin.register(MyWorkExperience)
+class MyWorkExperienceAdmin(admin.ModelAdmin):
+    list_display = ("titulo", "puesto", "fecha_years")
+    search_fields = ("titulo", "puesto", "descripcion")
+
+
+@admin.register(Technology)
+class TechnologyAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "link")
+    search_fields = ("nombre",)
