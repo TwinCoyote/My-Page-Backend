@@ -1,3 +1,4 @@
+import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -19,10 +20,9 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-import os
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
@@ -36,13 +36,18 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["clever-wonder-production-bd18.up.railway.app"]
-
-CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = [
+    "clever-wonder-production-bd18.up.railway.app",
+    "railway.app",
+    ".up.railway.app",
+]
 
 CORS_ALLOWED_ORIGINS = [
     "https://rub3n.dev",
+    "https://127.0.0.1:9004",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Application definition
 
@@ -64,16 +69,17 @@ INSTALLED_APPS += ["django_filters"]
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # aquí es correcto
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 ROOT_URLCONF = 'urls'
 
@@ -157,7 +163,6 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [Path(__file__).resolve().parent / "static"]
-# STATIC_ROOT = Path(__file__).resolve().parent / "staticfiles"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files
