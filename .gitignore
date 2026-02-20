@@ -1,0 +1,86 @@
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# =========================
+# ENTORNO VIRTUAL
+# =========================
+venv/
+env/
+Ruvenv/
+.venv/
+
+# =========================
+# DJANGO
+# =========================
+
+# Base de datos local
+db.sqlite3
+*.sqlite3
+
+# Archivos de logs
+*.log
+
+# Static compilado (collectstatic)
+staticfiles/
+../staticfiles/
+
+# Carpeta static generada accidentalmente
+static/
+
+# Media uploads (si tienes)
+media/
+
+# =========================
+# MIGRATIONS (IMPORTANTE)
+# =========================
+# NO ignorar migraciones en Django real
+# Solo ignorar los compilados
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# =========================
+# ARCHIVOS DE ENTORNO
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# IDE / EDITORES
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# SISTEMA OPERATIVO
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# ARCHIVOS TEMPORALES
+# =========================
+*.tmp
+*.bak
+
+# =========================
+# CACHE DE DJANGO / TESTS
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+# ARCHIVOS DE BUILD FRONTEND
+# =========================
+node_modules/
+dist/
+build/
